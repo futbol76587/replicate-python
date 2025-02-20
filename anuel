@@ -1,0 +1,42 @@
+import pygame
+import time
+
+def cantar_cancion():
+    # Inicializar pygame mixer
+    pygame.mixer.init()
+    
+    # Cargar el beat (debes tener un archivo 'beat.mp3' en la misma carpeta)
+    try:
+        pygame.mixer.music.load("beat.mp3")
+        pygame.mixer.music.play(-1)  # Reproduce en loop
+    except:
+        print("No se encontró el archivo de música. Asegúrate de tener 'beat.mp3' en la misma carpeta.")
+    
+    # Introducción
+    intro = "Real hasta la muerte, baby...\n\n"
+    
+    verso1 = "En la calle, yo lucho, no me voy a rendir, \n"
+    verso1 += "Recuerdos de un amor que no puedo sentir. \n"
+    verso1 += "Dices que me odias, pero yo sé que no es verdad, \n"
+    verso1 += "En el fondo de tu alma, siempre habrá un lugar. \n\n"
+
+    coro = "Ódiame, pero nunca me olvides, \n"
+    coro += "Aunque duela, siempre estaré en tu mente. \n"
+    coro += "Ódiame, si eso te hace sentir bien, \n"
+    coro += "Pero en mis sueños, siempre serás mi mujer. \n\n"
+
+    verso2 = "Las noches son frías, sin tu calor, \n"
+    verso2 += "Buscando en el cielo, una señal de amor. \n"
+    verso2 += "Te fuiste y me dejaste en la oscuridad, \n"
+    verso2 += "Pero en cada latido, te vuelvo a encontrar. \n\n"
+    
+    # Imprimir la canción con pausas para mayor realismo
+    for linea in intro.split("\n") + verso1.split("\n") + coro.split("\n") + verso2.split("\n") + coro.split("\n"):
+        print(linea)
+        time.sleep(1)  # Pausa entre líneas
+    
+    # Detener la música al finalizar
+    pygame.mixer.music.stop()
+
+# Llamar a la función para cantar la canción
+cantar_cancion()
